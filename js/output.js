@@ -21,11 +21,26 @@ var tableGenerator = tableGenerator || {};
     },
 
     getOutputResult: function() {
-      var table = document.getElementById('table');
+      var $table = $("table");
+      // save rows as plain arrays in an array
+      var rows = [];
+
+      $table.find("tr").each(function (index) {
+        var $cells = $(this).find("td");
+        rows[index] = [];
+
+        $cells.each(function () {
+          rows[index].push($(this).text());
+        });
+      });
 
       switch (this.state.currentOutput) {
         case "HTML":
-        return table ? table.outerHTML : "";
+          return $table ? Utils.convertToHTMLTags(rows) : "";
+        case "JSON":
+          return Utils.convertToJSON(rows);
+        case "Markdown":
+          return Utils.convertToMarkdown(rows);
       };
     },
 
@@ -46,7 +61,7 @@ var tableGenerator = tableGenerator || {};
           <nav>
             {optionAnchors}
           </nav>
-          <code className="prettyprint">
+          <code className="language-html">
             {outputResult}
           </code>
         </div>
