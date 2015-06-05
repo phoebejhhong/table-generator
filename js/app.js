@@ -36,6 +36,10 @@ var tableGenerator = tableGenerator || {};
       });
     },
 
+    componentDidUpdate: function() {
+      Prism.highlightAll();
+    },
+
     render: function() {
       return (
         <div id="app">
@@ -44,8 +48,11 @@ var tableGenerator = tableGenerator || {};
           </header>
           <section id ="main">
             <nav id="upper-nav">
-              <a href="#">Some Menu</a>
-              <a href="#">Other Menu</a>
+              <input
+                type="checkbox"
+                name="headerOption"
+              />
+              <span>headers on top row</span>
             </nav>
               <Table
                 rows={this.state.rows}
