@@ -1,16 +1,47 @@
+var tableGenerator = tableGenerator || {};
+
 (function () {
-  if (typeof TableGenerator == "undefined") {
-    window.TableGenerator = {};
-  }
 
-  var Utils = TableGenerator.Utils = {};
+  var Utils = tableGenerator.Utils = {};
 
-  Utils.convertToHTMLTags = function (obj) {
-    // TODO: prettify with indent
-    return obj.outerHTML;
+  // TODO: headers!!!
+
+  Utils.convertToHTMLTags = function (rows) {
+    var openingTags = "<table><tbody>";
+    var innerTags = "";
+
+    $.each(rows, function(idx, row) {
+      innerTags += "<tr>"
+
+      $.each(row, function(idx, cell) {
+        innerTags += "<td>" + cell + "</td>";
+      });
+
+      innerTags += "</tr>"
+    });
+
+    var closingTags = "</tbody></table>";
+
+    return openingTags + innerTags + closingTags;
   };
 
-  Utils.convertToJSON = function (obj) {
-    obj.children
-  }
+  Utils.convertToJSON = function (rows) {
+    return JSON.stringify(rows);
+  };
+
+  Utils.convertToMarkdown = function (rows) {
+    var result = "";
+
+    $.each(rows, function (idx, row) {
+      result += "|"
+
+      $.each(row, function (idx, cell) {
+        result += cell + "|";
+      });
+
+      result += "\n"
+    });
+
+    return result;
+  };
 })();

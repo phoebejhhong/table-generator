@@ -7,35 +7,12 @@ var tableGenerator = tableGenerator || {};
   var Utils = tableGenerator.Utils;
   var Output = tableGenerator.Output = React.createClass({
 
-    getInitialState : function() {
-      return {
-        currentOutput : "HTML",
-      };
-    },
-
-    updateOption: function(newOption) {
-      this.setState({
-        currentOutput : newOption
-      });
-    },
-
     getOutputResult: function() {
-      var $table = $("table");
-      // save rows as plain arrays in an array
-      var rows = [];
+      var rows = this.props.rows;
 
-      $table.find("tr").each(function (index) {
-        var $cells = $(this).find("td");
-        rows[index] = [];
-
-        $cells.each(function () {
-          rows[index].push($(this).find("input").val());
-        });
-      });
-
-      switch (this.state.currentOutput) {
+      switch (this.props.currentOutput) {
         case "HTML":
-          return $table ? Utils.convertToHTMLTags(rows) : "";
+          return Utils.convertToHTMLTags(rows);
         case "JSON":
           return Utils.convertToJSON(rows);
         case "Markdown":
@@ -44,12 +21,13 @@ var tableGenerator = tableGenerator || {};
     },
 
     render: function() {
+
       var that = this;
       var optionAnchors = OPTIONS.map(function(option) {
         return (
           <a key={option}
-          onClick={that.updateOption.bind(this, option)}>
-          {option}</a>
+            onClick={that.props.onChange.bind(this, option)}>
+            {option}</a>
         );
       });
 

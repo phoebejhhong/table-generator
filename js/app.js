@@ -6,6 +6,36 @@ var tableGenerator = tableGenerator || {};
   var Output = tableGenerator.Output;
   var App = tableGenerator.App = React.createClass({
 
+    getInitialState: function() {
+      return {
+        rows: [["", ""], ["", ""]],
+        currentOutput : "HTML",
+      };
+    },
+
+    getRows: function () {
+      var $table = $("table");
+      // save rows as plain arrays in an array
+      var rows = [];
+
+      $table.find("tr").each(function (index) {
+        var $cells = $(this).find("td");
+        rows[index] = [];
+
+        $cells.each(function () {
+          rows[index].push($(this).find("input").val());
+        });
+      });
+
+      this.setState({rows: rows});
+    },
+
+    updateOutputOption: function(newOption) {
+      this.setState({
+        currentOutput : newOption
+      });
+    },
+
     render: function() {
       return (
         <div id="app">
@@ -17,8 +47,15 @@ var tableGenerator = tableGenerator || {};
               <a href="#">Some Menu</a>
               <a href="#">Other Menu</a>
             </nav>
-              <Table />
-              <Output />
+              <Table
+                rows={this.state.rows}
+                onSubmit={this.getRows}
+              />
+              <Output
+                rows={this.state.rows}
+                onChange={this.updateOutputOption}
+                currentOutput={this.state.currentOutput}
+              />
           </section>
         </div>
       );
