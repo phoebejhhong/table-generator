@@ -14,7 +14,6 @@ var tableGenerator = tableGenerator || {};
     },
 
     updateOption: function(newOption) {
-      console.log(newOption);
       this.setState({
         currentOutput : newOption
       });
