@@ -29,7 +29,7 @@ var tableGenerator = tableGenerator || {};
         rows[index] = [];
 
         $cells.each(function () {
-          rows[index].push($(this).text());
+          rows[index].push($(this).find("input").val());
         });
       });
 

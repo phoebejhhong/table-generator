@@ -5,11 +5,11 @@ var tableGenerator = tableGenerator || {};
   var Table = tableGenerator.Table = React.createClass({
 
     getInitialState: function() {
-      return {rows: [["data1", ""], ["", ""]]}
+      return {rows: [["data2", ""], ["", ""]], value: "data1"}
     },
 
-    editCell: function() {
-      console.log("edt")
+    handleSubmit: function (event) {
+      console.log("submitted")
     },
 
     render: function() {
@@ -17,11 +17,16 @@ var tableGenerator = tableGenerator || {};
       var rows = this.state.rows.map(function (row) {
         var cells = $.map(row, function (cell) {
           // print &nbsp; when cell is empty
-          var cellValue = cell.length == 0 ? '\u00a0' : cell
+          var cellValue = cell.length == 0 ? "\u00a0" : cell
 
           return (
-            <td onClick={that.editCell}>
-              <input type="text" value ={cellValue}  />
+            <td>
+              <input
+                ref="editField"
+                className="edit"
+                onBlur={that.handleSubmit}
+                // value={cellValue}
+                />
             </td>
           );
         });
