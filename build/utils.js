@@ -6,23 +6,30 @@ var tableGenerator = tableGenerator || {};
 
   // TODO: headers!!!
 
-  Utils.convertToHTMLTags = function (rows) {
+  Utils.convertToHTMLTags = function (rows, header) {
     // TODO: indentations
 
-    var openingTags = "<table><tbody>";
+    var openingTags = "<table>\n\t<tbody>";
     var innerTags = "";
 
-    $.each(rows, function(idx, row) {
-      innerTags += "<tr>"
+    $.each(rows, function(rowIdx, row) {
+      innerTags += "\n\t\t<tr>"
+      if (rowIdx == 0 && header) {
+        $.each(row, function(idx, cell) {
+          innerTags += "\n\t\t\t<th>" + cell + "</th>";
+        });
 
-      $.each(row, function(idx, cell) {
-        innerTags += "<td>" + cell + "</td>";
-      });
+      } else {
+        $.each(row, function(idx, cell) {
+          innerTags += "\n\t\t\t<td>" + cell + "</td>";
+        });
 
-      innerTags += "</tr>"
+      }
+
+      innerTags += "\n\t\t</tr>"
     });
 
-    var closingTags = "</tbody></table>";
+    var closingTags = "\n\t</tbody>\n</table>";
 
     return openingTags + innerTags + closingTags;
   };
