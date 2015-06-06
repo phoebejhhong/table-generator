@@ -26,12 +26,14 @@ var tableGenerator = tableGenerator || {};
     },
 
     render: function() {
-
       var that = this;
       var optionAnchors = OPTIONS.map(function(option) {
         return (
-          React.createElement("a", {key: option, 
-            onClick: that.props.onChange.bind(this, option)}, 
+          React.createElement("a", {
+            href: "javascript:void(0)", 
+            key: option, 
+            onClick: that.props.onChange.bind(this, option), 
+            className: that.props.currentOutput == option? "selected":""}, 
             option)
         );
       });
@@ -40,7 +42,7 @@ var tableGenerator = tableGenerator || {};
       var langName = LANGUAGES_MAP[this.props.currentOutput]
 
       return (
-        React.createElement("div", {className: "output"}, 
+        React.createElement("div", {id: "output"}, 
           React.createElement("nav", null, 
             optionAnchors
           ), 

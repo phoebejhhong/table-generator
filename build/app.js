@@ -68,13 +68,15 @@ var tableGenerator = tableGenerator || {};
               React.createElement(TableSize, {
                 rows: this.state.rows, 
                 onChange: this.updateRows}), 
-              React.createElement("input", {
-                type: "checkbox", 
-                name: "headerOption", 
-                onChange: this.toggleHeader, 
-                checked: this.state.header}
-              ), 
-              React.createElement("span", null, "headers on top row")
+              React.createElement("div", {id: "header-option"}, 
+                React.createElement("input", {
+                  type: "checkbox", 
+                  name: "headerOption", 
+                  onChange: this.toggleHeader, 
+                  checked: this.state.header}
+                ), 
+                React.createElement("span", null, "headers on top row")
+              )
             ), 
               React.createElement(Table, {
                 header: this.state.header, 

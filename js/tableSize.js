@@ -61,20 +61,22 @@ var tableGenerator = tableGenerator || {};
       });
 
       return (
-        <span>
-          Table Size:
-          <select
-            onChange={this.updateColNum}
-            value={that.props.rows[0].length}>
-            {optionTags}
-          </select>
-          X
-          <select
-            onChange={this.updateRowNum}
-            value={that.props.rows.length}>
-            {optionTags}
-          </select>
-        </span>
+        <div id="table-size">
+          <span>
+            Table Size:
+            <select
+              onChange={this.updateColNum}
+              value={that.props.rows[0].length}>
+              {optionTags}
+            </select>
+            X
+            <select
+              onChange={this.updateRowNum}
+              value={that.props.rows.length}>
+              {optionTags}
+            </select>
+          </span>
+        </div>
       )
     }
 

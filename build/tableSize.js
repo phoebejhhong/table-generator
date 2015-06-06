@@ -61,18 +61,20 @@ var tableGenerator = tableGenerator || {};
       });
 
       return (
-        React.createElement("span", null, 
-          "Table Size:", 
-          React.createElement("select", {
-            onChange: this.updateColNum, 
-            value: that.props.rows[0].length}, 
-            optionTags
-          ), 
-          "X", 
-          React.createElement("select", {
-            onChange: this.updateRowNum, 
-            value: that.props.rows.length}, 
-            optionTags
+        React.createElement("div", {id: "table-size"}, 
+          React.createElement("span", null, 
+            "Table Size:", 
+            React.createElement("select", {
+              onChange: this.updateColNum, 
+              value: that.props.rows[0].length}, 
+              optionTags
+            ), 
+            "X", 
+            React.createElement("select", {
+              onChange: this.updateRowNum, 
+              value: that.props.rows.length}, 
+              optionTags
+            )
           )
         )
       )

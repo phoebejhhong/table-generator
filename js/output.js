@@ -26,12 +26,14 @@ var tableGenerator = tableGenerator || {};
     },
 
     render: function() {
-
       var that = this;
       var optionAnchors = OPTIONS.map(function(option) {
         return (
-          <a key={option}
-            onClick={that.props.onChange.bind(this, option)}>
+          <a
+            href="javascript:void(0)"
+            key={option}
+            onClick={that.props.onChange.bind(this, option)}
+            className={that.props.currentOutput == option? "selected":""}>
             {option}</a>
         );
       });
@@ -40,7 +42,7 @@ var tableGenerator = tableGenerator || {};
       var langName = LANGUAGES_MAP[this.props.currentOutput]
 
       return (
-        <div className="output">
+        <div id="output">
           <nav>
             {optionAnchors}
           </nav>

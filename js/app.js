@@ -68,13 +68,15 @@ var tableGenerator = tableGenerator || {};
               <TableSize
                 rows={this.state.rows}
                 onChange={this.updateRows} />
-              <input
-                type="checkbox"
-                name="headerOption"
-                onChange={this.toggleHeader}
-                checked={this.state.header}
-              />
-              <span>headers on top row</span>
+              <div id="header-option">
+                <input
+                  type="checkbox"
+                  name="headerOption"
+                  onChange={this.toggleHeader}
+                  checked={this.state.header}
+                />
+                <span>headers on top row</span>
+              </div>
             </nav>
               <Table
                 header={this.state.header}

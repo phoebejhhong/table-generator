@@ -1,10 +1,89 @@
+/**
+* BASE16 OCEAN COLORS
+* from https://github.com/chriskempson/base16/blob/master/scheme-previews/base16-ocean.html
+*/
 * {
-}
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  text-decoration: none; }
 
-table, tr, td {
-  border: 1px solid #222;
-}
+body {
+  background: #fff;
+  color: #8fa1b3; }
+
+h1 {
+  font-family: 'Dosis', georgia;
+  font-size: 4.5em;
+  color: #b48ead; }
+
+#app {
+  margin: auto;
+  width: 90%; }
+
+#upper-nav {
+  margin: 1em 0;
+  padding-bottom: 1em; }
+  #upper-nav input, #upper-nav select {
+    margin: 0 0.6em; }
+
+#table-size {
+  float: left; }
+
+#table-size::before {
+  content: '> '; }
+
+#header-option {
+  float: right; }
+
+table, tr, th, td {
+  border-collapse: collapse;
+  background: #2b303b;
+  border: 0.15em solid #fff; }
+
+th, td {
+  padding: 0.5em; }
+
+table input {
+  background: #2b303b;
+  border: 0;
+  width: 100%;
+  min-height: 2em;
+  color: #a3be8c;
+  font-size: 1em;
+  letter-spacing: 0.05em; }
+
+table input:focus {
+  outline: 0; }
+
+td:focus {
+  background: red; }
+
+th {
+  background: #eff1f5; }
+
+th input {
+  background: #eff1f5;
+  color: #bf616a; }
 
 table {
-  width: 80%;
-}
+  width: 100%; }
+
+#output nav {
+  margin-top: 1em; }
+#output a {
+  color: #8fa1b3;
+  margin-right: 1em;
+  padding: 0.5em; }
+#output a.selected {
+  background: #2b303b;
+  color: #d08770; }
+#output code {
+  padding: 0.5em;
+  display: block;
+  background: #2b303b; }
+  #output code span {
+    white-space: pre-wrap; }
+
+/*# sourceMappingURL=TableGenerator.css.map */
