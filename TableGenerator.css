@@ -10,13 +10,13 @@
   text-decoration: none; }
 
 body {
-  background: #fff;
+  background: #4f5b66;
   color: #8fa1b3; }
 
 h1 {
   font-family: 'Dosis', georgia;
   font-size: 4.5em;
-  color: #b48ead; }
+  color: #eff1f5; }
 
 #app {
   margin: auto;
@@ -40,7 +40,7 @@ h1 {
 table, tr, th, td {
   border-collapse: collapse;
   background: #2b303b;
-  border: 0.15em solid #fff; }
+  border: 0.2em solid #4f5b66; }
 
 th, td {
   padding: 0.5em; }
@@ -61,11 +61,11 @@ td:focus {
   background: red; }
 
 th {
-  background: #eff1f5; }
+  background: #a7adba; }
 
 th input {
-  background: #eff1f5;
-  color: #bf616a; }
+  background: #a7adba;
+  color: #2b303b; }
 
 table {
   width: 100%; }
