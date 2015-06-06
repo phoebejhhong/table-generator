@@ -2,6 +2,8 @@ var tableGenerator = tableGenerator || {};
 
 (function () {
 
+  var TableItem = tableGenerator.TableItem;
+
   var Table = tableGenerator.Table = React.createClass({
 
     render: function() {
@@ -11,28 +13,24 @@ var tableGenerator = tableGenerator || {};
       var rows = this.props.rows.map(function (row, rowIndex) {
         var cells = $.map(row, function (cell) {
           // print &nbsp; when cell is empty
-          var cellValue = cell.length == 0 ? "\u00a0" : cell
+          var cellValue = (cell.length == 0 ? "\u00a0" : cell);
 
           if (rowIndex == 0 && that.props.header) {
             return (
               <th>
-                <input
-                  type="text"
-                  ref="editField"
-                  className="edit"
-                  onBlur={that.props.onSubmit}
-                  value={cellValue}
-                  />
+                <TableItem
+                  onSubmit={that.props.onSubmit}
+                  cellValue={cellValue}
+                />
               </th>
             );
           } else {
             return (
               <td>
-                <input
-                  ref="editField"
-                  className="edit"
-                  onBlur={that.props.onSubmit}
-                  />
+              <TableItem
+                onSubmit={that.props.onSubmit}
+                cellValue={cellValue}
+              />
               </td>
             );
           }
