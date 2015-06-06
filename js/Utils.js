@@ -51,10 +51,12 @@ var tableGenerator = tableGenerator || {};
     }
   };
 
-  Utils.convertToMarkdown = function (rows) {
+  Utils.convertToMarkdown = function (rows, header) {
+    // TODO: prettify
+    
     var result = "";
 
-    $.each(rows, function (idx, row) {
+    $.each(rows, function (rowIdx, row) {
       result += "|"
 
       $.each(row, function (idx, cell) {
@@ -62,6 +64,13 @@ var tableGenerator = tableGenerator || {};
       });
 
       result += "\n"
+      if (rowIdx == 0 && header) {
+        result += "|"
+        for (var i = 0; i < row.length; i++) {
+          result += "---|"
+        }
+        result += "\n"
+      }
     });
 
     return result;
