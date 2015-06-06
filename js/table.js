@@ -12,15 +12,15 @@ var tableGenerator = tableGenerator || {};
 
       var rows = this.props.rows.map(function (row, rowIndex) {
         var cells = $.map(row, function (cell) {
-          // print &nbsp; when cell is empty
-          var cellValue = (cell.length == 0 ? "\u00a0" : cell);
+          // // print &nbsp; when cell is empty
+          // var cellValue = (cell.length == 0 ? "\u00a0" : cell);
 
           if (rowIndex == 0 && that.props.header) {
             return (
               <th>
                 <TableItem
                   onSubmit={that.props.onSubmit}
-                  cellValue={cellValue}
+                  cellValue={cell}
                 />
               </th>
             );
@@ -29,7 +29,7 @@ var tableGenerator = tableGenerator || {};
               <td>
               <TableItem
                 onSubmit={that.props.onSubmit}
-                cellValue={cellValue}
+                cellValue={cell}
               />
               </td>
             );

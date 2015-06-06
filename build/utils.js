@@ -4,10 +4,7 @@ var tableGenerator = tableGenerator || {};
 
   var Utils = tableGenerator.Utils = {};
 
-  // TODO: headers!!!
-
   Utils.convertToHTMLTags = function (rows, header) {
-    // TODO: indentations
 
     var openingTags = "<table>\n\t<tbody>";
     var innerTags = "";
