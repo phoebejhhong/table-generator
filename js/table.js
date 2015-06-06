@@ -6,20 +6,36 @@ var tableGenerator = tableGenerator || {};
 
     render: function() {
       var that = this;
-      var rows = this.props.rows.map(function (row) {
+      var headers = [];
+
+      var rows = this.props.rows.map(function (row, rowIndex) {
         var cells = $.map(row, function (cell) {
           // print &nbsp; when cell is empty
           var cellValue = cell.length == 0 ? "\u00a0" : cell
-          return (
-            <td>
-              <input
-                ref="editField"
-                className="edit"
-                onBlur={that.props.onSubmit}
-                // value={cellValue}
-                />
-            </td>
-          );
+
+          if (rowIndex == 0 && that.props.header) {
+            return (
+              <th>
+                <input
+                  type="text"
+                  ref="editField"
+                  className="edit"
+                  onBlur={that.props.onSubmit}
+                  value={cellValue}
+                  />
+              </th>
+            );
+          } else {
+            return (
+              <td>
+                <input
+                  ref="editField"
+                  className="edit"
+                  onBlur={that.props.onSubmit}
+                  />
+              </td>
+            );
+          }
         });
 
         return (

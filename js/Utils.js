@@ -7,6 +7,8 @@ var tableGenerator = tableGenerator || {};
   // TODO: headers!!!
 
   Utils.convertToHTMLTags = function (rows) {
+    // TODO: indentations
+
     var openingTags = "<table><tbody>";
     var innerTags = "";
 

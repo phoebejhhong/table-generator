@@ -3,6 +3,11 @@ var tableGenerator = tableGenerator || {};
 (function () {
 
   var OPTIONS = ["HTML", "JSON", "Markdown"]
+  var LANGUAGES_MAP = {
+    "HTML": "markup",
+    "JSON": "javascript",
+    "Markdown": "markdown"
+  };
 
   var Utils = tableGenerator.Utils;
   var Output = tableGenerator.Output = React.createClass({
@@ -32,13 +37,14 @@ var tableGenerator = tableGenerator || {};
       });
 
       var outputResult = this.getOutputResult();
+      var langName = LANGUAGES_MAP[this.props.currentOutput]
 
       return (
         <div className="output">
           <nav>
             {optionAnchors}
           </nav>
-          <code className="language-html">
+          <code className={"language-" + langName}>
             {outputResult}
           </code>
         </div>
