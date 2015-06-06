@@ -14,25 +14,25 @@ var tableGenerator = tableGenerator || {};
       var gap = newNum - currentRows.length;
 
       if (gap < 0) {
-        this.props.onChange(currentRows.slice(0, gap));
+        var newRows = currentRows.slice(0, gap);
       } else {
-        var newRow = [];
-        for (var i = 0; i < currentRows[0].length; i++) {
-          newRow[i] = "";
-        }
+        // deep copy
+        var newRows = currentRows.slice(0);
         for (var i = 0; i < gap; i++) {
-          currentRows.push(newRow);
+          newRows.push([])
+          for (var j = 0; j < currentRows[0].length; j++) {
+            newRows[newRows.length - 1].push("");
+          }
         }
-
-        this.props.onChange(currentRows);
       }
+      this.props.onChange(newRows);
     },
 
     updateColNum: function(event) {
       var currentRows = this.props.rows;
       var newNum = Number(event.target.value);
       var gap = newNum - currentRows[0].length;
-      
+
       if (gap < 0) {
         var newRows = currentRows.map(function (row) {
           return row.slice(0, gap);
@@ -45,7 +45,6 @@ var tableGenerator = tableGenerator || {};
           return row
         });
       }
-
       this.props.onChange(newRows);
     },
 
