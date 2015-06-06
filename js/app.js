@@ -3,15 +3,13 @@ var tableGenerator = tableGenerator || {};
 (function () {
 
   var Table = tableGenerator.Table;
+  var TableSize = tableGenerator.TableSize;
   var Output = tableGenerator.Output;
   var Utils = tableGenerator.Utils;
 
   var App = tableGenerator.App = React.createClass({
 
-    MAX_ROW_COL_NUM: 12,
-
     getInitialState: function() {
-
       return {
         header: true,
         rows: [["", "", ""], ["", "", ""], ["", "", ""], ["", "", ""]],
@@ -21,7 +19,6 @@ var tableGenerator = tableGenerator || {};
 
     getRows: function() {
       var $table = $("table");
-      // save rows as plain arrays in an array
       var rows = [];
 
       $table.find("tr").each(function (index) {
@@ -36,40 +33,10 @@ var tableGenerator = tableGenerator || {};
       this.setState({rows: rows});
     },
 
-    updateRowNum: function(event) {
-      var currentRows = this.state.rows;
-      var newNum = Number(event.target.value);
-      var gap = newNum - currentRows.length;
-
-      if (gap < 0) {
-        this.setState({
-          rows: currentRows.slice(0, gap)
-        });
-      } else {
-        var newRow = [];
-        for (var i = 0; i < currentRows[0].length; i++) {
-          newRow[i] = "";
-        }
-        for (var i = 0; i < gap; i++) {
-          currentRows.push(newRow);
-        }
-
-        this.setState({
-          row: currentRows
-        });
-      }
-    },
-
-    updateColNum: function() {
-      console.log("update");
-
-      var newRows = this.state.rows.map(function(row) {
-        return row.slice(0, gap);
-      });
-
+    updateRows: function (newRows) {
       this.setState({
         rows: newRows
-      });
+      })
     },
 
     toggleHeader: function() {
@@ -78,7 +45,7 @@ var tableGenerator = tableGenerator || {};
       });
     },
 
-    updateOutputOption: function(newOption) {
+    updateOutputOption: function (newOption) {
       this.setState({
         currentOutput : newOption
       });
@@ -91,24 +58,6 @@ var tableGenerator = tableGenerator || {};
     render: function() {
       var that = this;
 
-      var tableSizes = Utils.range(1, this.MAX_ROW_COL_NUM);
-
-      var colOptionTags = tableSizes.map(function (size) {
-        return (
-          <option>
-            {size}
-          </option>
-        )
-      });
-
-      var rowOptionTags = tableSizes.map(function (size) {
-        return (
-          <option>
-            {size}
-          </option>
-        )
-      });
-
       return (
         <div id="app">
           <header id="header">
@@ -116,20 +65,9 @@ var tableGenerator = tableGenerator || {};
           </header>
           <section id ="main">
             <nav id="upper-nav">
-              <span>
-                Table Size:
-                <select
-                  onChange={this.updateColNum}
-                  value={that.state.rows[0].length}>
-                  {colOptionTags}
-                </select>
-                X
-                <select
-                  onChange={this.updateRowNum}
-                  value={that.state.rows.length}>
-                  {rowOptionTags}
-                </select>
-              </span>
+              <TableSize
+                rows={this.state.rows}
+                onChange={this.updateRows} />
               <input
                 type="checkbox"
                 name="headerOption"
