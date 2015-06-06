@@ -53,7 +53,7 @@ var tableGenerator = tableGenerator || {};
 
   Utils.convertToMarkdown = function (rows, header) {
     // TODO: prettify
-    
+
     var result = "";
 
     $.each(rows, function (rowIdx, row) {
@@ -74,5 +74,17 @@ var tableGenerator = tableGenerator || {};
     });
 
     return result;
+  };
+
+  Utils.range = function(startNum, endNum, step) {
+    var array = [];
+    array[0] = startNum;
+    var step = step || 1;
+
+    while (startNum + step <= endNum) {
+      array[array.length]= startNum+= step;
+    };
+
+    return array;
   };
 })();
