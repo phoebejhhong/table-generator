@@ -9,7 +9,7 @@ var tableGenerator = tableGenerator || {};
     getInitialState: function() {
       return {
         header: false,
-        rows: [["", ""], ["", ""]],
+        rows: [["", ""], ["", ""], ["", ""], ["", ""]],
         currentOutput : "HTML",
       };
     },

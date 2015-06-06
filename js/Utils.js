@@ -31,8 +31,24 @@ var tableGenerator = tableGenerator || {};
     return openingTags + innerTags + closingTags;
   };
 
-  Utils.convertToJSON = function (rows) {
-    return JSON.stringify(rows);
+  Utils.convertToJSON = function (rows, header) {
+    if (header) {
+      var rowsWithHeaders = [];
+      var headers = rows[0];
+      var dataRows = rows.slice(1);
+
+      $.each(dataRows, function (dataRowIdx, dataRow) {
+        rowsWithHeaders[dataRowIdx] = {};
+
+        $.each(dataRow, function (dataCellIdx, dataCell) {
+          rowsWithHeaders[dataRowIdx][headers[dataCellIdx]] = dataCell;
+        });
+      })
+
+      return JSON.stringify(rowsWithHeaders);
+    } else {
+      return JSON.stringify(rows);
+    }
   };
 
   Utils.convertToMarkdown = function (rows) {
