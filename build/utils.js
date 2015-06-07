@@ -37,6 +37,10 @@ var tableGenerator = tableGenerator || {};
       var headers = rows[0];
       var dataRows = rows.slice(1);
 
+      if (Utils.uniqueCount(headers) !== headers.length) {
+        return "Fill headers with unique values first!";
+      }
+
       $.each(dataRows, function (dataRowIdx, dataRow) {
         rowsWithHeaders[dataRowIdx] = {};
 
@@ -87,4 +91,18 @@ var tableGenerator = tableGenerator || {};
 
     return array;
   };
+
+  Utils.uniqueCount = function (array) {
+    var uniqueArray = [], count = 0;
+
+    $.each(array, function(idx, el){
+      if (uniqueArray.indexOf(el) < 0) {
+        count += 1
+        uniqueArray.push(el);
+      }
+    });
+
+    return count;
+  };
+
 })();
