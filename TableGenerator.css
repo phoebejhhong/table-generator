@@ -65,6 +65,11 @@ h1 {
 .filled {
   background: #ebcb8b; }
 
+#grid-info {
+  background: #eff1f5;
+  padding: 0.3em;
+  position: fixed; }
+
 #table-size::before {
   content: '> '; }
 

@@ -84,6 +84,8 @@ var tableGenerator = tableGenerator || {};
 
   // Methods to change row size
 
+  // TODO: merge following two methods into one method...
+
   Utils.updateRowNum = function (rows, newRowNum) {
     var gap = newRowNum - rows.length;
 
