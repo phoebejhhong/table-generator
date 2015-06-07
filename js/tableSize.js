@@ -18,47 +18,9 @@ var tableGenerator = tableGenerator || {};
       }
     },
 
-    updateRowNum: function (rows, newRowNum) {
-      var gap = newRowNum - rows.length;
-
-      if (gap < 0) {
-        var newRows = rows.slice(0, gap);
-      } else {
-        // deep copy
-        var newRows = rows.slice(0);
-        for (var i = 0; i < gap; i++) {
-          newRows.push([])
-          for (var j = 0; j < rows[0].length; j++) {
-            newRows[newRows.length - 1].push("");
-          }
-        }
-      }
-
-      return newRows;
-    },
-
-    updateColNum: function (rows, newColNum) {
-      var gap = newColNum - rows[0].length;
-
-      if (gap < 0) {
-        var newRows = rows.map(function (row) {
-          return row.slice(0, gap);
-        });
-      } else {
-        var newRows = rows.map(function (row) {
-          for (var i = 0; i < gap; i++) {
-            row.push("");
-          }
-          return row
-        });
-      }
-
-      return newRows;
-    },
-
     updateTableSize: function (newColNum, newRowNum) {
-      var newRows = this.updateRowNum(this.props.rows, newRowNum);
-      newRows = this.updateColNum(newRows, newColNum);
+      var newRows = Utils.updateRowNum(this.props.rows, newRowNum);
+      newRows = Utils.updateColNum(newRows, newColNum);
 
       $("#table-size-grid").addClass("hidden");
       this.emptyTableGrid();
