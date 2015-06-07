@@ -10,6 +10,9 @@
   text-decoration: none;
   box-sizing: border-box; }
 
+a {
+  color: #8fa1b3; }
+
 body {
   background: #4f5b66;
   color: #8fa1b3; }
@@ -34,8 +37,14 @@ h1 {
   float: left; }
 
 #table-size-grid {
+  top: 8.9em;
   width: 450px;
-  height: 450px; }
+  height: 450px;
+  z-index: 5;
+  position: absolute; }
+
+.hidden {
+  display: none; }
 
 .grid-row {
   display: block; }
@@ -43,12 +52,18 @@ h1 {
 .grid-cell {
   float: left;
   display: block;
-  border: 0.1em solid #343d46;
-  width: 8.33%;
-  height: 8.33%; }
+  margin: 0 1px 1px 0;
+  width: 36.5px;
+  height: 36.5px;
+  background: #343d46;
+  opacity: 0.6; }
+
+.fixed {
+  background: #8fa1b3;
+  opacity: 1; }
 
 .filled {
-  background: #dfe1e8; }
+  background: #ebcb8b; }
 
 #table-size::before {
   content: '> '; }
@@ -106,7 +121,6 @@ th.editing {
 #output nav {
   margin-top: 1em; }
 #output a {
-  color: #8fa1b3;
   margin-right: 1em;
   padding: 0.5em; }
 #output a.selected {

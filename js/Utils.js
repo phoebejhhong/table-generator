@@ -4,6 +4,8 @@ var tableGenerator = tableGenerator || {};
 
   var Utils = tableGenerator.Utils = {};
 
+  // Methods to handle output
+
   Utils.convertToHTMLTags = function (rows, header) {
 
     var openingTags = "<table>\n\t<tbody>";
@@ -79,6 +81,8 @@ var tableGenerator = tableGenerator || {};
 
     return result;
   };
+
+  // Methods to extend Array functionality
 
   Utils.range = function(startNum, endNum, step) {
     var array = [];

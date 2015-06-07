@@ -8,6 +8,16 @@ var tableGenerator = tableGenerator || {};
 
     MAX_ROW_COL_NUM: 12,
 
+    toggleGrid: function () {
+      $grid = $("#table-size-grid");
+      if ($grid.hasClass("hidden")) {
+        $("#table-size-grid").removeClass("hidden");
+      } else {
+        this.emptyTableGrid();
+        $("#table-size-grid").addClass("hidden");
+      }
+    },
+
     updateRowNum: function (rows, newRowNum) {
       var gap = newRowNum - rows.length;
 
@@ -50,29 +60,47 @@ var tableGenerator = tableGenerator || {};
       var newRows = this.updateRowNum(this.props.rows, newRowNum);
       newRows = this.updateColNum(newRows, newColNum);
 
+      $("#table-size-grid").addClass("hidden");
+      this.emptyTableGrid();
       this.props.onChange(newRows);
     },
 
-    drawTableGrid: function (colNum, rowNum) {
-      // empty cells first
-      $(".grid-cell").removeClass("filled");
+    drawTableGrid: function (colNum, rowNum, isFixed) {
+      this.emptyTableGrid();
+
+      // differen class name for existing table size
+      // and temprary mouseover event size
+      var className = (isFixed ? "fixed" : "filled")
 
       $rowsToPaint = $(".grid-row").slice(0, rowNum);
 
       $rowsToPaint.each(function (rowIdx, row) {
         $cellsToPaint = $(row).find(".grid-cell").slice(0, colNum);
+
         $cellsToPaint.each(function (colIdx, cell) {
-          $(cell).addClass("filled");
+          $(cell).addClass(className);
         });
       });
     },
 
-    handleMouseOver: function(event) {
-      $target = $(event.currentTarget);
+    emptyTableGrid: function () {
+      $(".grid-cell").removeClass("filled");
     },
 
     componentDidMount: function() {
-      this.drawTableGrid(this.props.rows[0].length, this.props.rows.length);
+      var currentColNum =this.props.rows[0].length,
+        currentRowNum = this.props.rows.length;
+
+      this.drawTableGrid(currentColNum, currentRowNum, true);
+    },
+
+    componentDidUpdate: function() {
+      // draw fixed table size again
+      $(".fixed").removeClass("fixed");
+      var currentColNum =this.props.rows[0].length,
+        currentRowNum = this.props.rows.length;
+
+      this.drawTableGrid(currentColNum, currentRowNum, true);
     },
 
     render: function() {
@@ -83,7 +111,7 @@ var tableGenerator = tableGenerator || {};
         var gridCells = tableSizes.map(function (size, colIdx) {
           return (
             <div
-              onMouseOver={that.drawTableGrid.bind(this, colIdx+1, rowIdx+1)}
+              onMouseOver={that.drawTableGrid.bind(this, colIdx+1, rowIdx+1, false)}
               onClick={that.updateTableSize.bind(this, colIdx+1, rowIdx+1)}
               className="grid-cell">
             </div>
@@ -100,11 +128,14 @@ var tableGenerator = tableGenerator || {};
 
       return (
         <div id="table-size">
-          <a href="javascript:void(0)">
+          <a
+            href="javascript:void(0)"
+            onClick={this.toggleGrid}>
             Table Size:
             {that.props.rows[0].length} X {that.props.rows.length}
           </a>
           <div
+            className="hidden"
             id="table-size-grid">
           {gridRows}
           </div>
