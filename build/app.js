@@ -83,6 +83,9 @@ var tableGenerator = tableGenerator || {};
                 rows: this.state.rows, 
                 onSubmit: this.getRows}
               ), 
+              React.createElement("div", {className: ""}
+                
+              ), 
               React.createElement(Output, {
                 header: this.state.header, 
                 rows: this.state.rows, 

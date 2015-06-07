@@ -8,74 +8,106 @@ var tableGenerator = tableGenerator || {};
 
     MAX_ROW_COL_NUM: 12,
 
-    updateRowNum: function(event) {
-      var currentRows = this.props.rows;
-      var newNum = Number(event.target.value);
-      var gap = newNum - currentRows.length;
+    updateRowNum: function (rows, newRowNum) {
+      var gap = newRowNum - rows.length;
 
       if (gap < 0) {
-        var newRows = currentRows.slice(0, gap);
+        var newRows = rows.slice(0, gap);
       } else {
         // deep copy
-        var newRows = currentRows.slice(0);
+        var newRows = rows.slice(0);
         for (var i = 0; i < gap; i++) {
           newRows.push([])
-          for (var j = 0; j < currentRows[0].length; j++) {
+          for (var j = 0; j < rows[0].length; j++) {
             newRows[newRows.length - 1].push("");
           }
         }
       }
-      this.props.onChange(newRows);
+
+      return newRows;
     },
 
-    updateColNum: function(event) {
-      var currentRows = this.props.rows;
-      var newNum = Number(event.target.value);
-      var gap = newNum - currentRows[0].length;
+    updateColNum: function (rows, newColNum) {
+      var gap = newColNum - rows[0].length;
 
       if (gap < 0) {
-        var newRows = currentRows.map(function (row) {
+        var newRows = rows.map(function (row) {
           return row.slice(0, gap);
         });
       } else {
-        var newRows = currentRows.map(function (row) {
+        var newRows = rows.map(function (row) {
           for (var i = 0; i < gap; i++) {
             row.push("");
           }
           return row
         });
       }
+
+      return newRows;
+    },
+
+    updateTableSize: function (newColNum, newRowNum) {
+      var newRows = this.updateRowNum(this.props.rows, newRowNum);
+      newRows = this.updateColNum(newRows, newColNum);
+
       this.props.onChange(newRows);
+    },
+
+    drawTableGrid: function (colNum, rowNum) {
+      // empty cells first
+      $(".grid-cell").removeClass("filled");
+
+      $rowsToPaint = $(".grid-row").slice(0, rowNum);
+
+      $rowsToPaint.each(function (rowIdx, row) {
+        $cellsToPaint = $(row).find(".grid-cell").slice(0, colNum);
+        $cellsToPaint.each(function (colIdx, cell) {
+          $(cell).addClass("filled");
+        });
+      });
+    },
+
+    handleMouseOver: function(event) {
+      $target = $(event.currentTarget);
+    },
+
+    componentDidMount: function() {
+      this.drawTableGrid(this.props.rows[0].length, this.props.rows.length);
     },
 
     render: function() {
       var that = this;
       var tableSizes = Utils.range(1, this.MAX_ROW_COL_NUM);
 
-      var optionTags = tableSizes.map(function (size) {
+      var gridRows = tableSizes.map(function (size, rowIdx) {
+        var gridCells = tableSizes.map(function (size, colIdx) {
+          return (
+            <div
+              onMouseOver={that.drawTableGrid.bind(this, colIdx+1, rowIdx+1)}
+              onClick={that.updateTableSize.bind(this, colIdx+1, rowIdx+1)}
+              className="grid-cell">
+            </div>
+          )
+        });
+
         return (
-          <option>
-            {size}
-          </option>
+          <div
+            className="grid-row">
+            {gridCells}
+          </div>
         )
       });
 
       return (
         <div id="table-size">
-          <span>
+          <a href="javascript:void(0)">
             Table Size:
-            <select
-              onChange={this.updateColNum}
-              value={that.props.rows[0].length}>
-              {optionTags}
-            </select>
-            X
-            <select
-              onChange={this.updateRowNum}
-              value={that.props.rows.length}>
-              {optionTags}
-            </select>
-          </span>
+            {that.props.rows[0].length} X {that.props.rows.length}
+          </a>
+          <div
+            id="table-size-grid">
+          {gridRows}
+          </div>
         </div>
       )
     }

@@ -23,6 +23,7 @@ h1 {
   margin: auto;
   width: 90%; }
 
+/* UPPER NAV STARTS */
 #upper-nav {
   margin: 1em 0;
   padding-bottom: 1em; }
@@ -32,11 +33,33 @@ h1 {
 #table-size {
   float: left; }
 
+#table-size-grid {
+  width: 450px;
+  height: 450px; }
+
+.grid-row {
+  display: block; }
+
+.grid-cell {
+  float: left;
+  display: block;
+  border: 0.1em solid #343d46;
+  width: 8.33%;
+  height: 8.33%; }
+
+.filled {
+  background: #dfe1e8; }
+
 #table-size::before {
   content: '> '; }
 
 #header-option {
   float: right; }
+
+/* UPPER NAV ENDS */
+/* TABLE STARTS */
+table {
+  width: 100%; }
 
 table, tr, th, td {
   border-collapse: collapse;
@@ -78,9 +101,8 @@ td.editing {
 th.editing {
   background: #b48ead; }
 
-table {
-  width: 100%; }
-
+/* TABLE ENDS */
+/* OUTPUT STARTS */
 #output nav {
   margin-top: 1em; }
 #output a {
@@ -96,5 +118,7 @@ table {
   background: #2b303b; }
   #output code span {
     white-space: pre-wrap; }
+
+/* OUTPUT ENDS */
 
 /*# sourceMappingURL=TableGenerator.css.map */
