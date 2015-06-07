@@ -60,9 +60,6 @@ var tableGenerator = tableGenerator || {};
 
       return (
         <div id="app">
-          <header id="header">
-            <h1>Table Generator</h1>
-          </header>
           <section id ="main">
             <nav id="upper-nav">
               <TableSize
@@ -84,7 +81,7 @@ var tableGenerator = tableGenerator || {};
                 onSubmit={this.getRows}
               />
               <div className="">
-                
+
               </div>
               <Output
                 header={this.state.header}

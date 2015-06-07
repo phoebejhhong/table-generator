@@ -18,12 +18,29 @@ body {
   background: #4f5b66;
   color: #8fa1b3; }
 
+/* HEADER STARTS */
+header {
+  margin: auto;
+  width: 80%;
+  overflow: auto; }
+
 h1 {
   font-family: 'Dosis', georgia;
   font-style: italic;
   font-size: 4.5em;
-  color: #eff1f5; }
+  color: #eff1f5;
+  float: left; }
 
+#about {
+  float: left;
+  position: relative;
+  top: 3em;
+  font-size: 18px;
+  color: #2b303b; }
+  #about a {
+    color: #eff1f5; }
+
+/* HEADER ENDS */
 #app {
   margin: auto;
   width: 90%; }

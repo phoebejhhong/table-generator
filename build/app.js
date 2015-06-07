@@ -60,9 +60,6 @@ var tableGenerator = tableGenerator || {};
 
       return (
         React.createElement("div", {id: "app"}, 
-          React.createElement("header", {id: "header"}, 
-            React.createElement("h1", null, "Table Generator")
-          ), 
           React.createElement("section", {id: "main"}, 
             React.createElement("nav", {id: "upper-nav"}, 
               React.createElement(TableSize, {
@@ -84,7 +81,7 @@ var tableGenerator = tableGenerator || {};
                 onSubmit: this.getRows}
               ), 
               React.createElement("div", {className: ""}
-                
+
               ), 
               React.createElement(Output, {
                 header: this.state.header, 
