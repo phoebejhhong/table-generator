@@ -38,7 +38,7 @@ var tableGenerator = tableGenerator || {};
       var dataRows = rows.slice(1);
 
       if (Utils.uniqueCount(headers) !== headers.length) {
-        return "Fill headers with unique values first!";
+        return "/* Fill headers with unique values first! */";
       }
 
       $.each(dataRows, function (dataRowIdx, dataRow) {

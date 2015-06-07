@@ -140,8 +140,12 @@ pre[data-line] {
 /* Markup */
 .language-markup .token.tag,
 .language-markup .token.attr-name,
-.language-markup .token.punctuation {
-	color: hsl(33, 33%, 52%); /* #AC885B */
+.language-markup {
+	color: #bf616a; /* MODIFIED base08 */
+}
+
+.token.punctuation {
+	color: #c0c5ce; /* MODIFIED base05 */
 }
 
 /* Make the tokens sit above the line highlight so the colours don't look faded. */

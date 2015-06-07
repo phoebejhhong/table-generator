@@ -13,11 +13,17 @@ var tableGenerator = tableGenerator || {};
       })
     },
 
+    handleSubmit: function(event) {
+      this.props.onSubmit();
+      this.props.onBlur(event);
+    },
+
     render: function() {
       return (
           React.createElement("input", {
             type: "text", 
-            onBlur: this.props.onSubmit, 
+            onFocus: this.props.onFocus, 
+            onBlur: this.handleSubmit, 
             onChange: this.handleChange, 
             value: this.state.cellValue}
           )

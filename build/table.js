@@ -6,19 +6,27 @@ var tableGenerator = tableGenerator || {};
 
   var Table = tableGenerator.Table = React.createClass({displayName: "Table",
 
+    handleEdit: function (event) {
+      $parent = $(event.target).parent();
+      if ($parent.hasClass("editing")) {
+        $parent.removeClass("editing");
+      } else {
+        $parent.addClass("editing");
+      }
+    },
+
     render: function() {
       var that = this;
       var headers = [];
 
       var rows = this.props.rows.map(function (row, rowIndex) {
         var cells = $.map(row, function (cell) {
-          // // print &nbsp; when cell is empty
-          // var cellValue = (cell.length == 0 ? "\u00a0" : cell);
-
           if (rowIndex == 0 && that.props.header) {
             return (
               React.createElement("th", null, 
                 React.createElement(TableItem, {
+                  onFocus: that.handleEdit, 
+                  onBlur: that.handleEdit, 
                   onSubmit: that.props.onSubmit, 
                   cellValue: cell}
                 )
@@ -28,6 +36,8 @@ var tableGenerator = tableGenerator || {};
             return (
               React.createElement("td", null, 
               React.createElement(TableItem, {
+                onFocus: that.handleEdit, 
+                onBlur: that.handleEdit, 
                 onSubmit: that.props.onSubmit, 
                 cellValue: cell}
               )
