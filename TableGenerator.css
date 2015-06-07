@@ -7,6 +7,7 @@
   border: 0;
   padding: 0;
   font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
   text-decoration: none;
   box-sizing: border-box; }
 
@@ -19,6 +20,7 @@ body {
 
 h1 {
   font-family: 'Dosis', georgia;
+  font-style: italic;
   font-size: 4.5em;
   color: #eff1f5; }
 
@@ -32,6 +34,10 @@ h1 {
   padding-bottom: 1em; }
   #upper-nav input, #upper-nav select {
     margin: 0 0.6em; }
+
+.material-icons {
+  top: 5px;
+  position: relative; }
 
 #table-size {
   float: left; }
@@ -69,9 +75,6 @@ h1 {
   background: #eff1f5;
   padding: 0.3em;
   position: fixed; }
-
-#table-size::before {
-  content: '> '; }
 
 #header-option {
   float: right; }
@@ -126,11 +129,13 @@ th.editing {
 #output nav {
   margin-top: 1em; }
 #output a {
+  display: inline-block;
   margin-right: 1em;
   padding: 0.5em; }
 #output a.selected {
   background: #2b303b;
-  color: #d08770; }
+  color: #d08770;
+  border-left: 0.2em solid #d08770; }
 #output code {
   padding: 0.5em;
   display: block;

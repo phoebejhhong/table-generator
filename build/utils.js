@@ -4,7 +4,7 @@ var tableGenerator = tableGenerator || {};
 
   var Utils = tableGenerator.Utils = {};
 
-  // Methods to handle output
+  // Methods to handle convert table into something else
 
   Utils.convertToHTMLTags = function (rows, header) {
 
@@ -84,7 +84,7 @@ var tableGenerator = tableGenerator || {};
 
   // Methods to change row size
 
-  // TODO: merge following two methods into one method...
+  // TODO: merge following two methods into one method
 
   Utils.updateRowNum = function (rows, newRowNum) {
     var gap = newRowNum - rows.length;

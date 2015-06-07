@@ -117,7 +117,11 @@ var tableGenerator = tableGenerator || {};
             href: "javascript:void(0)", 
             onClick: this.toggleGrid}, 
             "Table Size:", 
-            that.props.rows[0].length, " X ", that.props.rows.length
+            " " + that.props.rows[0].length, " X ", that.props.rows.length, 
+            React.createElement("i", {
+              className: "material-icons"}, 
+              ""
+            )
           ), 
           React.createElement("div", {
             className: "hidden", 
