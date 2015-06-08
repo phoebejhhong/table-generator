@@ -66,7 +66,7 @@ var tableGenerator = tableGenerator || {};
 
     handleInfo: function(colIdx,rowIdx,event) {
       $info.css({left:event.pageX + 10, top:event.pageY + 10});
-      $info.text(colIdx + " X " + rowIdx);s
+      $info.text(colIdx + " X " + rowIdx);
     },
 
     componentDidMount: function() {
@@ -94,10 +94,10 @@ var tableGenerator = tableGenerator || {};
         var gridCells = tableSizes.map(function (size, colIdx) {
           return (
             React.createElement("div", {
-              onMouseOver: that.drawTableGrid.bind(this, colIdx+1, rowIdx+1, false), 
-              onMouseOut: that.emptyTableGrid, 
-              onClick: that.updateTableSize.bind(this, colIdx+1, rowIdx+1), 
-              onMouseMove: that.handleInfo.bind(this, colIdx+1, rowIdx+1), 
+              onMouseOver: that.drawTableGrid.bind(this, colIdx+1, rowIdx+1, false),
+              onMouseOut: that.emptyTableGrid,
+              onClick: that.updateTableSize.bind(this, colIdx+1, rowIdx+1),
+              onMouseMove: that.handleInfo.bind(this, colIdx+1, rowIdx+1),
               className: "grid-cell"}
             )
           )
@@ -105,31 +105,31 @@ var tableGenerator = tableGenerator || {};
 
         return (
           React.createElement("div", {
-            className: "grid-row"}, 
+            className: "grid-row"},
             gridCells
           )
         )
       });
 
       return (
-        React.createElement("div", {id: "table-size"}, 
+        React.createElement("div", {id: "table-size"},
           React.createElement("a", {
-            href: "javascript:void(0)", 
-            onClick: this.toggleGrid}, 
-            "Table Size:", 
-            " " + that.props.rows[0].length, " X ", that.props.rows.length, 
+            href: "javascript:void(0)",
+            onClick: this.toggleGrid},
+            "Table Size:",
+            " " + that.props.rows[0].length, " X ", that.props.rows.length,
             React.createElement("i", {
-              className: "material-icons"}, 
+              className: "material-icons"},
               ""
             )
-          ), 
+          ),
           React.createElement("div", {
-            className: "hidden", 
-            id: "table-size-grid"}, 
-          gridRows, 
+            className: "hidden",
+            id: "table-size-grid"},
+          gridRows,
             React.createElement("span", {
-              id: "grid-info", 
-              className: "hidden"}, 
+              id: "grid-info",
+              className: "hidden"},
               "INFOFOFOFO"
             )
           )

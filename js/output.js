@@ -9,7 +9,7 @@ var tableGenerator = tableGenerator || {};
     "Markdown": "markdown"
   };
 
-  var Utils = tableGenerator.Utils;
+  var Convert = tableGenerator.Convert;
   var Output = tableGenerator.Output = React.createClass({
 
     getOutputResult: function() {
@@ -17,11 +17,11 @@ var tableGenerator = tableGenerator || {};
 
       switch (this.props.currentOutput) {
         case "HTML":
-          return Utils.convertToHTMLTags(rows, this.props.header);
+          return Convert.toHTMLTags(rows, this.props.header);
         case "JSON":
-          return Utils.convertToJSON(rows, this.props.header);
+          return Convert.toJSON(rows, this.props.header);
         case "Markdown":
-          return Utils.convertToMarkdown(rows, this.props.header);
+          return Convert.toMarkdown(rows, this.props.header);
       };
     },
 
