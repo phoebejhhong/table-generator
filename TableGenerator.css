@@ -160,6 +160,9 @@ th.editing {
   #output code span {
     white-space: pre-wrap; }
 
+#canvas {
+  margin: auto; }
+
 /* OUTPUT ENDS */
 
 /*# sourceMappingURL=TableGenerator.css.map */
