@@ -8,8 +8,17 @@ var tableGenerator = tableGenerator || {};
     },
 
     handleChange: function(event) {
+      textArea = event.target;
+
+      // autoresize textareas on the same row
+      // according to length of the contents
+      $(textArea).css(
+        {"height":"auto"}
+      ).parent().siblings().andSelf().find("textarea")
+      .height(textArea.scrollHeight - 15);
+
       this.setState({
-        cellValue: event.target.value
+        cellValue: textArea.value
       })
     },
 
@@ -20,12 +29,13 @@ var tableGenerator = tableGenerator || {};
 
     render: function() {
       return (
-          React.createElement("input", {
-            type: "text", 
+          React.createElement("textarea", {
             onFocus: this.props.onFocus, 
             onBlur: this.handleSubmit, 
             onChange: this.handleChange, 
-            value: this.state.cellValue}
+            value: this.state.cellValue, 
+            rows: "1"
+          }
           )
       );
     },

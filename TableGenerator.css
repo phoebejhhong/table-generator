@@ -109,7 +109,7 @@ table, tr, th, td {
 th, td {
   padding: 0.5em; }
 
-table input {
+table textarea {
   background: #2b303b;
   border: 0;
   width: 100%;
@@ -117,9 +117,13 @@ table input {
   color: #a3be8c;
   font-size: 1em;
   letter-spacing: 0.05em;
-  padding: 0.5em; }
+  padding: 0.5em;
+  height: auto;
+  overflow: hidden;
+  outline: none;
+  resize: none; }
 
-table input:focus {
+table textarea:focus {
   outline: 0; }
 
 td:focus {
@@ -128,7 +132,7 @@ td:focus {
 th {
   background: #a7adba; }
 
-th input {
+th textarea {
   background: #a7adba;
   color: #2b303b; }
 
