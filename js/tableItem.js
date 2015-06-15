@@ -8,14 +8,21 @@ var tableGenerator = tableGenerator || {};
     },
 
     handleChange: function(event) {
-      textArea = event.target;
+      var textArea = event.target,
+        $textArea = $(textArea),
+        scrollHeight = textArea.scrollHeight - 16;
+
+      $textArea.css(
+        {"height":"auto"}
+      );
 
       // autoresize textareas on the same row
       // according to length of the contents
-      $(textArea).css(
-        {"height":"auto"}
-      ).parent().siblings().andSelf().find("textarea")
-      .height(textArea.scrollHeight - 15);
+      if ($textArea.height() !== scrollHeight) {
+        debugger
+        $textArea.parent().siblings().andSelf().find("textarea")
+        .height(scrollHeight);
+      }
 
       this.setState({
         cellValue: textArea.value

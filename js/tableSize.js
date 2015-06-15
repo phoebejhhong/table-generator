@@ -30,7 +30,7 @@ var tableGenerator = tableGenerator || {};
     drawTableGrid: function (colNum, rowNum, isFixed) {
       this.emptyTableGrid();
 
-      // differen class name for existing table size
+      // different class name for existing table size
       // and temprary mouseover event size
       var className = (isFixed ? "fixed" : "filled")
 
@@ -66,7 +66,7 @@ var tableGenerator = tableGenerator || {};
 
     handleInfo: function(colIdx,rowIdx,event) {
       $info.css({left:event.pageX + 10, top:event.pageY + 10});
-      $info.text(colIdx + " X " + rowIdx);s
+      $info.text(colIdx + " X " + rowIdx);
     },
 
     componentDidMount: function() {
@@ -130,7 +130,6 @@ var tableGenerator = tableGenerator || {};
             <span
               id="grid-info"
               className="hidden">
-              INFOFOFOFO
             </span>
           </div>
         </div>
