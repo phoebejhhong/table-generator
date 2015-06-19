@@ -72,4 +72,8 @@ var tableGenerator = tableGenerator || {};
     return count;
   };
 
+  Utils.max = function (array) {
+    return Math.max.apply(null, array);
+  };
+
 })();

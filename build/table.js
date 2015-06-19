@@ -17,11 +17,9 @@ var tableGenerator = tableGenerator || {};
 
     resizeTextAreas: function() {
       $("textarea").each(function (idx, textArea) {
-        debugger
         var $textArea = $(textArea),
           scrollHeight = textArea.scrollHeight - 16;
         if ($textArea.height() !== scrollHeight) {
-          debugger
           $textArea.parent().siblings().andSelf().find("textarea")
           .height(scrollHeight);
         }
