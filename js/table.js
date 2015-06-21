@@ -2,7 +2,8 @@ var tableGenerator = tableGenerator || {};
 
 (function () {
 
-  var TableItem = tableGenerator.TableItem;
+  var TableItem = tableGenerator.TableItem,
+    Utils = tableGenerator.Utils;
 
   var Table = tableGenerator.Table = React.createClass({
 
@@ -16,13 +17,17 @@ var tableGenerator = tableGenerator || {};
     },
 
     resizeTextAreas: function() {
-      $("textarea").each(function (idx, textArea) {
-        var $textArea = $(textArea),
-          scrollHeight = textArea.scrollHeight - 16;
-        if ($textArea.height() !== scrollHeight) {
-          $textArea.parent().siblings().andSelf().find("textarea")
-          .height(scrollHeight);
-        }
+      $("tr").each(function (idx, tr) {
+        var textAreas = $(tr).find("textarea");
+
+        textAreas.css({"height": "auto"});
+
+        var scrollHeights = textAreas.map(function (idx, tA) {
+          return tA.scrollHeight
+        }),
+        maxScrollHeight = Utils.max(scrollHeights);
+        console.log(maxScrollHeight);
+        textAreas.height(maxScrollHeight - 16);
       });
     },
 
@@ -31,6 +36,7 @@ var tableGenerator = tableGenerator || {};
     },
 
     componentDidUpdate: function() {
+      // TODO: resize only when the table size is modified
       this.resizeTextAreas();
     },
 
