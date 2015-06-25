@@ -1,4 +1,4 @@
 build/.module-cache
-TableGenerator.css.map
-TableGenerator.scss
+css/*.css.map
+css/*.scss
 .sass-cache

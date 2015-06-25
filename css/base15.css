@@ -1,0 +1,68 @@
+/**
+* BASE16 OCEAN COLORS
+* from https://github.com/chriskempson/base16/blob/master/scheme-previews/base16-ocean.html
+*/
+a {
+  color: #8fa1b3; }
+
+body {
+  background: #4f5b66;
+  color: #8fa1b3; }
+
+h1 {
+  color: #eff1f5; }
+
+#about {
+  color: #2b303b; }
+  #about a {
+    color: #eff1f5; }
+
+.grid-cell {
+  background: #343d46; }
+
+.fixed {
+  background: #8fa1b3; }
+
+.filled {
+  background: #ebcb8b; }
+
+#grid-info {
+  background: #eff1f5; }
+
+/* UPPER NAV ENDS */
+/* TABLE STARTS */
+table, tr, th, td {
+  background: #2b303b;
+  border: 0.2em solid #4f5b66; }
+
+table textarea {
+  background: #2b303b;
+  color: #a3be8c; }
+
+th, th textarea {
+  background: #8fa1b3;
+  color: #2b303b; }
+
+.ch, .ch textarea {
+  background: #a7adba;
+  color: #2b303b; }
+
+td.editing {
+  background: #96b5b4; }
+
+th.editing {
+  background: #a3be8c; }
+
+.ch.editing {
+  background: #b48ead; }
+
+/* TABLE ENDS */
+/* OUTPUT STARTS */
+#output a.selected {
+  background: #2b303b;
+  color: #d08770;
+  border-left: 0.2em solid #d08770; }
+#output code {
+  background: #2b303b; }
+
+/*# sourceMappingURL=base15.css.map */
