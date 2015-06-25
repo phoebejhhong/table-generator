@@ -65,6 +65,7 @@ var tableGenerator = tableGenerator || {};
             onChange={this.handleChange}
             value={this.state.cellValue}
             rows="1"
+            spellcheck="false"
           >
           </textarea>
       );
