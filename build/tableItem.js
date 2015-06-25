@@ -60,12 +60,12 @@ var tableGenerator = tableGenerator || {};
     render: function() {
       return (
           React.createElement("textarea", {
-            onFocus: this.props.onFocus, 
-            onBlur: this.handleSubmit, 
-            onChange: this.handleChange, 
-            value: this.state.cellValue, 
-            rows: "1", 
-            spellcheck: "false"
+            onFocus: this.props.onFocus,
+            onBlur: this.handleSubmit,
+            onChange: this.handleChange,
+            value: this.state.cellValue,
+            rows: "1",
+            spellCheck: "false"
           }
           )
       );
