@@ -12,6 +12,7 @@ var tableGenerator = tableGenerator || {};
     getInitialState: function() {
       return {
         header: true,
+        colHeader: true,
         rows: [["", "", ""], ["", "", ""], ["", "", ""], ["", "", ""]],
         currentOutput : "HTML",
       };
@@ -61,6 +62,12 @@ var tableGenerator = tableGenerator || {};
       });
     },
 
+    toggleColHeader: function() {
+      this.setState({
+        colHeader: !this.state.colHeader
+      });
+    },
+
     updateOutputOption: function (newOption) {
       this.setState({
         currentOutput : newOption
@@ -93,10 +100,18 @@ var tableGenerator = tableGenerator || {};
                   checked={this.state.header}
                 />
                 <span>headers on top row</span>
+                <input
+                  type="checkbox"
+                  name="headerOption"
+                  onChange={this.toggleColHeader}
+                  checked={this.state.colHeader}
+                />
+                <span>headers on first column</span>
               </div>
             </nav>
               <Table
                 header={this.state.header}
+                colHeader={this.state.colHeader}
                 rows={this.state.rows}
                 onSubmit={this.getRows}
               />

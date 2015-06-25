@@ -129,10 +129,11 @@ table textarea:focus {
 td:focus {
   background: red; }
 
-th {
-  background: #a7adba; }
+th, th textarea {
+  background: #8fa1b3;
+  color: #2b303b; }
 
-th textarea {
+.ch, .ch textarea {
   background: #a7adba;
   color: #2b303b; }
 
@@ -143,6 +144,9 @@ td.editing {
   background: #96b5b4; }
 
 th.editing {
+  background: #a3be8c; }
+
+.ch.editing {
   background: #b48ead; }
 
 /* TABLE ENDS */

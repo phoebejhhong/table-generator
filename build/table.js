@@ -21,8 +21,8 @@ var tableGenerator = tableGenerator || {};
       var headers = [];
 
       var rows = this.props.rows.map(function (row, rowIndex) {
-        var cells = $.map(row, function (cell) {
-          if (rowIndex == 0 && that.props.header) {
+        var cells = $.map(row, function (cell, colIdx) {
+          if (rowIndex === 0 && that.props.header) {
             return (
               React.createElement("th", null, 
                 React.createElement(TableItem, {
@@ -34,8 +34,12 @@ var tableGenerator = tableGenerator || {};
               )
             );
           } else {
+            var className = (colIdx === 0 && that.props.colHeader ? "ch" : "");
+
             return (
-              React.createElement("td", null, 
+              React.createElement("td", {
+                className: className
+              }, 
               React.createElement(TableItem, {
                 onFocus: that.handleEdit, 
                 onBlur: that.handleEdit, 

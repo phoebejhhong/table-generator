@@ -12,6 +12,7 @@ var tableGenerator = tableGenerator || {};
     getInitialState: function() {
       return {
         header: true,
+        colHeader: true,
         rows: [["", "", ""], ["", "", ""], ["", "", ""], ["", "", ""]],
         currentOutput : "HTML",
       };
@@ -61,6 +62,12 @@ var tableGenerator = tableGenerator || {};
       });
     },
 
+    toggleColHeader: function() {
+      this.setState({
+        colHeader: !this.state.colHeader
+      });
+    },
+
     updateOutputOption: function (newOption) {
       this.setState({
         currentOutput : newOption
@@ -92,11 +99,19 @@ var tableGenerator = tableGenerator || {};
                   onChange: this.toggleHeader, 
                   checked: this.state.header}
                 ), 
-                React.createElement("span", null, "headers on top row")
+                React.createElement("span", null, "headers on top row"), 
+                React.createElement("input", {
+                  type: "checkbox", 
+                  name: "headerOption", 
+                  onChange: this.toggleColHeader, 
+                  checked: this.state.colHeader}
+                ), 
+                React.createElement("span", null, "headers on first column")
               )
             ), 
               React.createElement(Table, {
                 header: this.state.header, 
+                colHeader: this.state.colHeader, 
                 rows: this.state.rows, 
                 onSubmit: this.getRows}
               ), 
