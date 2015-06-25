@@ -36,7 +36,23 @@ var tableGenerator = tableGenerator || {};
     updateRows: function (newRows) {
       this.setState({
         rows: newRows
-      })
+      },
+        this.resizeTextAreas.bind(this)
+      );
+    },
+
+    resizeTextAreas: function() {
+      $("tr").each(function (idx, tr) {
+        var textAreas = $(tr).find("textarea");
+
+        textAreas.css({"height": "auto"});
+
+        var scrollHeights = textAreas.map(function (idx, tA) {
+          return tA.scrollHeight
+        }),
+        maxScrollHeight = Utils.max(scrollHeights);
+        textAreas.height(maxScrollHeight - 16);
+      });
     },
 
     toggleHeader: function() {
@@ -49,6 +65,10 @@ var tableGenerator = tableGenerator || {};
       this.setState({
         currentOutput : newOption
       });
+    },
+
+    componentDidMount: function() {
+      window.addEventListener('resize', this.resizeTextAreas);
     },
 
     componentDidUpdate: function() {

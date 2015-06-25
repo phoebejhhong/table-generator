@@ -16,30 +16,6 @@ var tableGenerator = tableGenerator || {};
       }
     },
 
-    resizeTextAreas: function() {
-      $("tr").each(function (idx, tr) {
-        var textAreas = $(tr).find("textarea");
-
-        textAreas.css({"height": "auto"});
-
-        var scrollHeights = textAreas.map(function (idx, tA) {
-          return tA.scrollHeight
-        }),
-        maxScrollHeight = Utils.max(scrollHeights);
-        console.log(maxScrollHeight);
-        textAreas.height(maxScrollHeight - 16);
-      });
-    },
-
-    componentDidMount: function() {
-      window.addEventListener('resize', this.resizeTextAreas);
-    },
-
-    componentDidUpdate: function() {
-      // TODO: resize only when the table size is modified
-      this.resizeTextAreas();
-    },
-
     render: function() {
       var that = this;
       var headers = [];
