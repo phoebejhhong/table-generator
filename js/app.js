@@ -4,6 +4,7 @@ var tableGenerator = tableGenerator || {};
 
   var Table = tableGenerator.Table;
   var TableSize = tableGenerator.TableSize;
+  var TableMenu = tableGenerator.TableMenu;
   var Output = tableGenerator.Output;
   var Utils = tableGenerator.Utils;
 
@@ -14,7 +15,8 @@ var tableGenerator = tableGenerator || {};
         header: true,
         colHeader: true,
         rows: [["", "", ""], ["", "", ""], ["", "", ""], ["", "", ""]],
-        currentOutput : "HTML",
+        currentOutput: "HTML",
+        currentTheme: "base16_ocean_dark",
       };
     },
 
@@ -56,18 +58,6 @@ var tableGenerator = tableGenerator || {};
       });
     },
 
-    toggleHeader: function() {
-      this.setState({
-        header: !this.state.header
-      });
-    },
-
-    toggleColHeader: function() {
-      this.setState({
-        colHeader: !this.state.colHeader
-      });
-    },
-
     updateOutputOption: function (newOption) {
       this.setState({
         currentOutput : newOption
@@ -92,22 +82,12 @@ var tableGenerator = tableGenerator || {};
               <TableSize
                 rows={this.state.rows}
                 onChange={this.updateRows} />
-              <div id="header-option">
-                <input
-                  type="checkbox"
-                  name="headerOption"
-                  onChange={this.toggleHeader}
-                  checked={this.state.header}
-                />
-                <span>headers on top row</span>
-                <input
-                  type="checkbox"
-                  name="headerOption"
-                  onChange={this.toggleColHeader}
-                  checked={this.state.colHeader}
-                />
-                <span>headers on first column</span>
-              </div>
+              <TableMenu
+                header={this.state.header}
+                colHeader={this.state.colHeader}
+                currentTheme={this.state.currentTheme}
+                onChange={this.setState.bind(this)}
+              />
             </nav>
               <Table
                 header={this.state.header}
@@ -115,9 +95,6 @@ var tableGenerator = tableGenerator || {};
                 rows={this.state.rows}
                 onSubmit={this.getRows}
               />
-              <div className="">
-
-              </div>
               <Output
                 header={this.state.header}
                 rows={this.state.rows}

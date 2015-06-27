@@ -4,6 +4,7 @@ var tableGenerator = tableGenerator || {};
 
   var Table = tableGenerator.Table;
   var TableSize = tableGenerator.TableSize;
+  var TableMenu = tableGenerator.TableMenu;
   var Output = tableGenerator.Output;
   var Utils = tableGenerator.Utils;
 
@@ -14,7 +15,8 @@ var tableGenerator = tableGenerator || {};
         header: true,
         colHeader: true,
         rows: [["", "", ""], ["", "", ""], ["", "", ""], ["", "", ""]],
-        currentOutput : "HTML",
+        currentOutput: "HTML",
+        currentTheme: "base16_ocean_dark",
       };
     },
 
@@ -56,18 +58,6 @@ var tableGenerator = tableGenerator || {};
       });
     },
 
-    toggleHeader: function() {
-      this.setState({
-        header: !this.state.header
-      });
-    },
-
-    toggleColHeader: function() {
-      this.setState({
-        colHeader: !this.state.colHeader
-      });
-    },
-
     updateOutputOption: function (newOption) {
       this.setState({
         currentOutput : newOption
@@ -92,21 +82,11 @@ var tableGenerator = tableGenerator || {};
               React.createElement(TableSize, {
                 rows: this.state.rows, 
                 onChange: this.updateRows}), 
-              React.createElement("div", {id: "header-option"}, 
-                React.createElement("input", {
-                  type: "checkbox", 
-                  name: "headerOption", 
-                  onChange: this.toggleHeader, 
-                  checked: this.state.header}
-                ), 
-                React.createElement("span", null, "headers on top row"), 
-                React.createElement("input", {
-                  type: "checkbox", 
-                  name: "headerOption", 
-                  onChange: this.toggleColHeader, 
-                  checked: this.state.colHeader}
-                ), 
-                React.createElement("span", null, "headers on first column")
+              React.createElement(TableMenu, {
+                header: this.state.header, 
+                colHeader: this.state.colHeader, 
+                currentTheme: this.state.currentTheme, 
+                onChange: this.setState.bind(this)}
               )
             ), 
               React.createElement(Table, {
@@ -114,9 +94,6 @@ var tableGenerator = tableGenerator || {};
                 colHeader: this.state.colHeader, 
                 rows: this.state.rows, 
                 onSubmit: this.getRows}
-              ), 
-              React.createElement("div", {className: ""}
-
               ), 
               React.createElement(Output, {
                 header: this.state.header, 
