@@ -18,7 +18,7 @@ h1 {
     color: #eff1f5; }
 
 .grid-cell {
-  background: #343d46; }
+  background: #eff1f5; }
 
 .fixed {
   background: #8fa1b3; }
@@ -26,8 +26,16 @@ h1 {
 .filled {
   background: #ebcb8b; }
 
+.nav-item a:hover, .nav-item.open a {
+  background: #eff1f5; }
+
 .dropdown {
   background: #eff1f5; }
+  .dropdown ul {
+    background: #eff1f5; }
+
+#table-size-grid {
+  background: #96b5b4; }
 
 #grid-info {
   background: #eff1f5; }

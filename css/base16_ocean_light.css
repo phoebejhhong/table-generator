@@ -18,13 +18,24 @@ h1 {
     color: #a3be8c; }
 
 .grid-cell {
-  background: #8fa1b3; }
+  background: #dfe1e8; }
 
 .fixed {
   background: #343d46; }
 
 .filled {
   background: #d08770; }
+
+.nav-item a:hover, .nav-item.open a {
+  background: #dfe1e8; }
+
+.dropdown {
+  background: #dfe1e8; }
+  .dropdown ul {
+    background: #dfe1e8; }
+
+#table-size-grid {
+  background: #8fa1b3; }
 
 #grid-info {
   background: #eff1f5; }
