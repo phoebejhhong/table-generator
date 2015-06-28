@@ -7,7 +7,7 @@ var tableGenerator = tableGenerator || {};
   tableGenerator.UpperNav = React.createClass({displayName: "UpperNav",
 
     getInitialState: function() {
-      return {currentMenuIdx: null}
+      return {currentMenuIdx: undefined}
     },
 
     // open specific menu
@@ -23,7 +23,7 @@ var tableGenerator = tableGenerator || {};
       var currentMenu = $(".nav-item")[this.state.currentMenuIdx];
       $(currentMenu).removeClass("open");
       this.setState({
-        currentMenuIdx: null
+        currentMenuIdx: undefined
       });
     },
 
@@ -33,7 +33,7 @@ var tableGenerator = tableGenerator || {};
         targetMenu = $(event.target).parents(".nav-item")[0],
         targetIdx = $(".nav-item").index(targetMenu);
 
-      if (currentIdx !== null) {
+      if (typeof currentIdx !== "undefined") {
         this.closeDropdown();
 
         if (currentIdx !== targetIdx) {

@@ -11,6 +11,7 @@ var tableGenerator = tableGenerator || {};
 
     getInitialState: function() {
       return {
+        title: undefined,
         header: true,
         colHeader: true,
         rows: [["", "", ""], ["", "", ""], ["", "", ""], ["", "", ""]],
