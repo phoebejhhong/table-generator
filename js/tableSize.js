@@ -8,23 +8,14 @@ var tableGenerator = tableGenerator || {};
 
     MAX_ROW_COL_NUM: 12,
 
-    toggleGrid: function () {
-      $grid = $("#table-size-grid");
-      if ($grid.hasClass("hidden")) {
-        $("#table-size-grid").removeClass("hidden");
-      } else {
-        this.emptyTableGrid();
-        $("#table-size-grid").addClass("hidden");
-      }
-    },
-
     updateTableSize: function (newColNum, newRowNum) {
       var newRows = Utils.updateRowNum(this.props.rows, newRowNum);
       newRows = Utils.updateColNum(newRows, newColNum);
 
-      $("#table-size-grid").addClass("hidden");
       this.emptyTableGrid();
-      this.props.onChange(newRows);
+      // close dropdown
+      this.props.onSubmit();
+      this.props.onTableSizeChange(newRows);
     },
 
     drawTableGrid: function (colNum, rowNum, isFixed) {
@@ -112,10 +103,14 @@ var tableGenerator = tableGenerator || {};
       });
 
       return (
-        <div id="table-size">
+        <div
+        id="table-size"
+        className="nav-item"
+        >
           <a
             href="javascript:void(0)"
-            onClick={this.toggleGrid}>
+            onClick={this.props.onClick}
+            >
             Table Size:
             {" " + that.props.rows[0].length} X {that.props.rows.length}
             <i
@@ -124,7 +119,7 @@ var tableGenerator = tableGenerator || {};
             </i>
           </a>
           <div
-            className="hidden"
+            className="dropdown"
             id="table-size-grid">
           {gridRows}
             <span

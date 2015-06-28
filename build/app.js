@@ -3,8 +3,7 @@ var tableGenerator = tableGenerator || {};
 (function () {
 
   var Table = tableGenerator.Table;
-  var TableSize = tableGenerator.TableSize;
-  var TableMenu = tableGenerator.TableMenu;
+  var UpperNav = tableGenerator.UpperNav;
   var Output = tableGenerator.Output;
   var Utils = tableGenerator.Utils;
 
@@ -73,34 +72,29 @@ var tableGenerator = tableGenerator || {};
     },
 
     render: function() {
-      var that = this;
-
       return (
         React.createElement("div", {id: "app"}, 
           React.createElement("section", {id: "main"}, 
-            React.createElement("nav", {id: "upper-nav"}, 
-              React.createElement(TableSize, {
-                rows: this.state.rows, 
-                onChange: this.updateRows}), 
-              React.createElement(TableMenu, {
-                header: this.state.header, 
-                colHeader: this.state.colHeader, 
-                currentTheme: this.state.currentTheme, 
-                onChange: this.setState.bind(this)}
-              )
+            React.createElement(UpperNav, {
+              rows: this.state.rows, 
+              header: this.state.header, 
+              colHeader: this.state.colHeader, 
+              currentTheme: this.state.currentTheme, 
+              onChange: this.setState.bind(this), 
+              onTableSizeChange: this.updateRows}
             ), 
-              React.createElement(Table, {
-                header: this.state.header, 
-                colHeader: this.state.colHeader, 
-                rows: this.state.rows, 
-                onSubmit: this.getRows}
-              ), 
-              React.createElement(Output, {
-                header: this.state.header, 
-                rows: this.state.rows, 
-                onChange: this.updateOutputOption, 
-                currentOutput: this.state.currentOutput}
-              )
+            React.createElement(Table, {
+              header: this.state.header, 
+              colHeader: this.state.colHeader, 
+              rows: this.state.rows, 
+              onSubmit: this.getRows}
+            ), 
+            React.createElement(Output, {
+              header: this.state.header, 
+              rows: this.state.rows, 
+              onChange: this.updateOutputOption, 
+              currentOutput: this.state.currentOutput}
+            )
           )
         )
       );

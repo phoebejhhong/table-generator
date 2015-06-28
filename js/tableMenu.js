@@ -9,9 +9,12 @@ var tableGenerator = tableGenerator || {};
     ],
 
     toggleHeader: function() {
-      this.props.onChange({
+    this.props.onChange({
         header: !this.props.header
       });
+
+      // close dropdown
+      this.props.onSubmit();
     },
 
     toggleColHeader: function() {
@@ -19,6 +22,9 @@ var tableGenerator = tableGenerator || {};
       this.props.onChange({
         colHeader: !that.props.colHeader
       });
+
+      // close dropdown
+      this.props.onSubmit();
     },
 
     changeTheme: function(event) {
@@ -31,6 +37,9 @@ var tableGenerator = tableGenerator || {};
       this.props.onChange({
         currentTheme: targetTheme
       });
+
+      // close dropdown
+      this.props.onSubmit();
     },
 
     render: function() {
@@ -43,44 +52,62 @@ var tableGenerator = tableGenerator || {};
                 id={theme}
                 href="javascript:void(0)"
                 onClick={that.changeTheme}
+                className={that.props.currentTheme == theme ? "checked" : ""}
               >
-            {theme}
-            </a>
+              {theme}
+              </a>
             </li>
           )
         })
       );
 
       return (
-        <ul id="table-menu">
-          <li>
-            <input
-              type="checkbox"
-              name="headerOption"
-              onChange={this.toggleHeader}
-              checked={this.props.header}
-            />
-            <span>headers on top row</span>
-          </li>
-          <li>
-            <input
-              type="checkbox"
-              name="headerOption"
-              onChange={this.toggleColHeader}
-              checked={this.props.colHeader}
-            />
-            <span>headers on first column</span>
-          </li>
-          <li>
-            <a
-              href="javascript:void(0)">
-            Theme
-            </a>
-            <ul>
-              {themeLis}
-            </ul>
-          </li>
-        </ul>
+        <div
+          id="table-menu"
+          className="nav-item"
+        >
+          <a href="javascript:void(0)"
+            onClick={this.props.onClick}
+          >
+          Table
+          <i
+            className="material-icons">
+            &#xE5C5;
+          </i>
+          </a>
+          <ul
+            className="dropdown hidden"
+            id="table-dropdown"
+            >
+            <li>
+              <a
+                href="javascript:void(0)"
+                onClick={this.toggleHeader}
+                className={this.props.header ? "checked" : ""}
+              >
+                Headers on top row
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)"
+                onClick={this.toggleColHeader}
+                className={this.props.colHeader ? "checked" : ""}
+              >
+                Headers on first column
+              </a>
+            </li>
+            <li>
+              <a
+                href="javascript:void(0)">
+              Theme
+              </a>
+              <ul>
+                {themeLis}
+              </ul>
+            </li>
+          </ul>
+        </div>
       )
     }
   })

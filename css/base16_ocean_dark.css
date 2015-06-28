@@ -26,6 +26,9 @@ h1 {
 .filled {
   background: #ebcb8b; }
 
+.dropdown {
+  background: #eff1f5; }
+
 #grid-info {
   background: #eff1f5; }
 
@@ -65,4 +68,4 @@ th.editing {
 #output code {
   background: #2b303b; }
 
-/*# sourceMappingURL=base15.css.map */
+/*# sourceMappingURL=base16_ocean_dark.css.map */

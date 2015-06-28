@@ -9,9 +9,12 @@ var tableGenerator = tableGenerator || {};
     ],
 
     toggleHeader: function() {
-      this.props.onChange({
+    this.props.onChange({
         header: !this.props.header
       });
+
+      // close dropdown
+      this.props.onSubmit();
     },
 
     toggleColHeader: function() {
@@ -19,6 +22,9 @@ var tableGenerator = tableGenerator || {};
       this.props.onChange({
         colHeader: !that.props.colHeader
       });
+
+      // close dropdown
+      this.props.onSubmit();
     },
 
     changeTheme: function(event) {
@@ -31,6 +37,9 @@ var tableGenerator = tableGenerator || {};
       this.props.onChange({
         currentTheme: targetTheme
       });
+
+      // close dropdown
+      this.props.onSubmit();
     },
 
     render: function() {
@@ -42,42 +51,60 @@ var tableGenerator = tableGenerator || {};
               React.createElement("a", {
                 id: theme, 
                 href: "javascript:void(0)", 
-                onClick: that.changeTheme
+                onClick: that.changeTheme, 
+                className: that.props.currentTheme == theme ? "checked" : ""
               }, 
-            theme
-            )
+              theme
+              )
             )
           )
         })
       );
 
       return (
-        React.createElement("ul", {id: "table-menu"}, 
-          React.createElement("li", null, 
-            React.createElement("input", {
-              type: "checkbox", 
-              name: "headerOption", 
-              onChange: this.toggleHeader, 
-              checked: this.props.header}
-            ), 
-            React.createElement("span", null, "headers on top row")
+        React.createElement("div", {
+          id: "table-menu", 
+          className: "nav-item"
+        }, 
+          React.createElement("a", {href: "javascript:void(0)", 
+            onClick: this.props.onClick
+          }, 
+          "Table", 
+          React.createElement("i", {
+            className: "material-icons"}, 
+            ""
+          )
           ), 
-          React.createElement("li", null, 
-            React.createElement("input", {
-              type: "checkbox", 
-              name: "headerOption", 
-              onChange: this.toggleColHeader, 
-              checked: this.props.colHeader}
+          React.createElement("ul", {
+            className: "dropdown hidden", 
+            id: "table-dropdown"
+            }, 
+            React.createElement("li", null, 
+              React.createElement("a", {
+                href: "javascript:void(0)", 
+                onClick: this.toggleHeader, 
+                className: this.props.header ? "checked" : ""
+              }, 
+                "Headers on top row"
+              )
             ), 
-            React.createElement("span", null, "headers on first column")
-          ), 
-          React.createElement("li", null, 
-            React.createElement("a", {
-              href: "javascript:void(0)"}, 
-            "Theme"
+            React.createElement("li", null, 
+              React.createElement("a", {
+                href: "javascript:void(0)", 
+                onClick: this.toggleColHeader, 
+                className: this.props.colHeader ? "checked" : ""
+              }, 
+                "Headers on first column"
+              )
             ), 
-            React.createElement("ul", null, 
-              themeLis
+            React.createElement("li", null, 
+              React.createElement("a", {
+                href: "javascript:void(0)"}, 
+              "Theme"
+              ), 
+              React.createElement("ul", null, 
+                themeLis
+              )
             )
           )
         )

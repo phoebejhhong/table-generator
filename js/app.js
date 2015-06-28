@@ -3,8 +3,7 @@ var tableGenerator = tableGenerator || {};
 (function () {
 
   var Table = tableGenerator.Table;
-  var TableSize = tableGenerator.TableSize;
-  var TableMenu = tableGenerator.TableMenu;
+  var UpperNav = tableGenerator.UpperNav;
   var Output = tableGenerator.Output;
   var Utils = tableGenerator.Utils;
 
@@ -73,34 +72,29 @@ var tableGenerator = tableGenerator || {};
     },
 
     render: function() {
-      var that = this;
-
       return (
         <div id="app">
           <section id ="main">
-            <nav id="upper-nav">
-              <TableSize
-                rows={this.state.rows}
-                onChange={this.updateRows} />
-              <TableMenu
-                header={this.state.header}
-                colHeader={this.state.colHeader}
-                currentTheme={this.state.currentTheme}
-                onChange={this.setState.bind(this)}
-              />
-            </nav>
-              <Table
-                header={this.state.header}
-                colHeader={this.state.colHeader}
-                rows={this.state.rows}
-                onSubmit={this.getRows}
-              />
-              <Output
-                header={this.state.header}
-                rows={this.state.rows}
-                onChange={this.updateOutputOption}
-                currentOutput={this.state.currentOutput}
-              />
+            <UpperNav
+              rows={this.state.rows}
+              header={this.state.header}
+              colHeader={this.state.colHeader}
+              currentTheme={this.state.currentTheme}
+              onChange={this.setState.bind(this)}
+              onTableSizeChange={this.updateRows}
+            />
+            <Table
+              header={this.state.header}
+              colHeader={this.state.colHeader}
+              rows={this.state.rows}
+              onSubmit={this.getRows}
+            />
+            <Output
+              header={this.state.header}
+              rows={this.state.rows}
+              onChange={this.updateOutputOption}
+              currentOutput={this.state.currentOutput}
+            />
           </section>
         </div>
       );
