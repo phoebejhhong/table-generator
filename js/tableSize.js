@@ -4,7 +4,7 @@ var tableGenerator = tableGenerator || {};
 
   var Utils = tableGenerator.Utils;
 
-  var TableSize = tableGenerator.TableSize = React.createClass({
+  tableGenerator.TableSize = React.createClass({
 
     MAX_ROW_COL_NUM: 12,
 

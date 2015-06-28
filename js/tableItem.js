@@ -3,7 +3,7 @@ var tableGenerator = tableGenerator || {};
 (function () {
 
   var Utils = tableGenerator.Utils;
-  var TableItem = tableGenerator.TableItem = React.createClass({
+  tableGenerator.TableItem = React.createClass({
     getInitialState: function() {
       return {cellValue: this.props.cellValue};
     },

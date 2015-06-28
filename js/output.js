@@ -12,7 +12,7 @@ var tableGenerator = tableGenerator || {};
 
   var Convert = tableGenerator.Convert,
     Canvas = tableGenerator.Canvas;
-  var Output = tableGenerator.Output = React.createClass({
+  tableGenerator.Output = React.createClass({
 
   getOutputResult: function() {
     var rows = this.props.rows;

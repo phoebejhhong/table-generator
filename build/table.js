@@ -5,7 +5,7 @@ var tableGenerator = tableGenerator || {};
   var TableItem = tableGenerator.TableItem,
     Utils = tableGenerator.Utils;
 
-  var Table = tableGenerator.Table = React.createClass({displayName: "Table",
+  tableGenerator.Table = React.createClass({displayName: "Table",
 
     handleEdit: function (event) {
       $parent = $(event.target).parent();

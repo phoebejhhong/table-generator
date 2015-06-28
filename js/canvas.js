@@ -14,7 +14,7 @@ var tableGenerator = tableGenerator || {};
       },
     };
 
-  var Canvas = tableGenerator.Canvas = React.createClass({
+  tableGenerator.Canvas = React.createClass({
 
     draw: function(options) {
       // TODO: definitely refactor this !!

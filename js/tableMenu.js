@@ -1,7 +1,7 @@
 var tableGenerator = tableGenerator || {};
 
 (function () {
-  var TableMenu = tableGenerator.TableMenu = React.createClass({
+  tableGenerator.TableMenu = React.createClass({
 
     THEMES: [
       'base16_ocean_dark',
