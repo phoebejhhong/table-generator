@@ -29,11 +29,12 @@ var tableGenerator = tableGenerator || {};
 
     changeTheme: function(event) {
       var targetTheme = event.target.id,
-        oldCssFileName = "css/" + this.props.currentTheme + ".css",
         newCssFileName = "css/" + targetTheme + ".css",
-        oldLink = $("link[href='" + oldCssFileName +"']");
+        targetLink = $("link[href='" + newCssFileName +"']");
 
-      oldLink.attr('href', newCssFileName);
+      $("link.theme").attr("disabled", true);
+      $(targetLink).attr("disabled", false);
+
       this.props.onChange({
         currentTheme: targetTheme
       });
