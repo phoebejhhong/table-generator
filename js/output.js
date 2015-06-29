@@ -2,12 +2,11 @@ var tableGenerator = tableGenerator || {};
 
 (function () {
 
-  var OPTIONS = ["HTML", "JSON", "Markdown", "Image"];
+  var OPTIONS = ["HTML", "JSON", "Markdown"];
   var LANGUAGES_MAP = {
     "HTML": "markup",
     "JSON": "javascript",
     "Markdown": "markdown",
-    "Image": "markup",
   };
 
   var Convert = tableGenerator.Convert,
@@ -23,11 +22,6 @@ var tableGenerator = tableGenerator || {};
         return Convert.toJSON(rows, this.props.header);
       case "Markdown":
         return Convert.toMarkdown(rows, this.props.header);
-      case "Image":
-        return (
-          <Canvas
-            rows={this.props.rows} />
-      );
     };
   },
 
