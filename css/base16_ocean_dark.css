@@ -34,6 +34,9 @@ h1 {
   .dropdown ul {
     background: #eff1f5; }
 
+.dropdown li:hover, .dropdown li:hover > a {
+  background: #dfe1e8; }
+
 #table-size-grid {
   background: #96b5b4; }
 
