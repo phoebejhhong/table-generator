@@ -16,20 +16,33 @@ module.exports = function(grunt) {
             }
         }
     },
-    browserSync: {
-        default_options: {
-            bsFiles: {
-                src: [
-                    "css/*.css",
-                    "*.html"
-                ]
-            }
+
+    uglify: {
+      options: {
+        mangle:false,
+        beautify: true
+      },
+      my_target: {
+        files: {
+          'build/tableGenerator.min.js': [
+            'build/utils.js',
+            'build/convert.js',
+            'build/tableSize.js',
+            'build/tableMenu.js',
+            'build/tableNav.js',
+            'build/tableItem.js',
+            'build/table.js',
+            'build/output.js',
+            'build/app.js'
+            ]
         }
     }
+  }
   });
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['watch']);
 };
