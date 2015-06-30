@@ -9,8 +9,7 @@ var tableGenerator = tableGenerator || {};
     "Markdown": "markdown",
   };
 
-  var Convert = tableGenerator.Convert,
-    Canvas = tableGenerator.Canvas;
+  var Convert = tableGenerator.Convert;
   tableGenerator.Output = React.createClass({
 
   getOutputResult: function() {
