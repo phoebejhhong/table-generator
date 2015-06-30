@@ -1,6 +1,10 @@
 module.exports = function(grunt) {
   grunt.initConfig({
     watch: {
+      react: {
+        files: "js/*.js",
+        tasks: ['react']
+      },
       sass: {
         files: "css/*.scss",
         tasks: ['sass']
@@ -16,6 +20,20 @@ module.exports = function(grunt) {
             }
         }
     },
+
+    react: {
+    dynamic_mappings: {
+      files: [
+        {
+          expand: true,
+          cwd: 'js/',
+          src: ['*.js'],
+          dest: 'build/',
+          ext: '.js'
+        }
+      ]
+    }
+  },
 
     uglify: {
       options: {
@@ -42,6 +60,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-react');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
   grunt.registerTask('default', ['watch']);
