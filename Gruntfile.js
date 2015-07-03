@@ -10,6 +10,9 @@ module.exports = function(grunt) {
         tasks: ['sass']
       }
     },
+    qunit: {
+      all: ['tests/qunit-runner.html']
+    },
     sass: {
         dev: {
             files: {
@@ -56,6 +59,7 @@ module.exports = function(grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-react');
