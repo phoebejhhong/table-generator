@@ -20,6 +20,18 @@ var tableGenerator = tableGenerator || {};
       var that = this;
       var headers = [];
 
+      var title = function() {
+        if (typeof that.props.title !== "undefined") {
+          return (
+            React.createElement("caption", null, 
+              that.props.title
+            )
+          )
+        } else {
+          return "";
+        }
+      }();
+
       var rows = this.props.rows.map(function (row, rowIndex) {
         var cells = $.map(row, function (cell, colIdx) {
           if (rowIndex === 0 && that.props.header) {
@@ -60,6 +72,7 @@ var tableGenerator = tableGenerator || {};
 
       return (
         React.createElement("table", {id: "table"}, 
+          title, 
           React.createElement("tbody", null, 
             rows
           )

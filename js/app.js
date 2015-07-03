@@ -85,6 +85,7 @@ var tableGenerator = tableGenerator || {};
               onTableSizeChange={this.updateRows}
             />
             <Table
+              title={this.state.title}
               header={this.state.header}
               colHeader={this.state.colHeader}
               rows={this.state.rows}

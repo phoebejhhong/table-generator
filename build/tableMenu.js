@@ -82,6 +82,13 @@ var tableGenerator = tableGenerator || {};
             }, 
             React.createElement("li", null, 
               React.createElement("a", {
+              href: "javascript:void(0)"
+              }, 
+                "Add Title"
+              )
+            ), 
+            React.createElement("li", null, 
+              React.createElement("a", {
                 href: "javascript:void(0)", 
                 onClick: this.toggleHeader, 
                 className: this.props.header ? "checked" : ""
