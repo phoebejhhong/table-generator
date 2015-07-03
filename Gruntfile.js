@@ -20,21 +20,19 @@ module.exports = function(grunt) {
             }
         }
     },
-
     react: {
-    dynamic_mappings: {
-      files: [
-        {
-          expand: true,
-          cwd: 'js/',
-          src: ['*.js'],
-          dest: 'build/',
-          ext: '.js'
-        }
-      ]
-    }
-  },
-
+      dynamic_mappings: {
+        files: [
+          {
+            expand: true,
+            cwd: 'js/',
+            src: ['*.js'],
+            dest: 'build/',
+            ext: '.js'
+          }
+        ]
+      }
+    },
     uglify: {
       options: {
         mangle:false,
@@ -54,8 +52,8 @@ module.exports = function(grunt) {
             'build/app.js'
             ]
         }
+      }
     }
-  }
   });
 
   grunt.loadNpmTasks('grunt-contrib-sass');
