@@ -82,13 +82,6 @@ var tableGenerator = tableGenerator || {};
             >
             <li>
               <a
-              href="javascript:void(0)"
-              >
-                Add Title
-              </a>
-            </li>
-            <li>
-              <a
                 href="javascript:void(0)"
                 onClick={this.toggleHeader}
                 className={this.props.header ? "checked" : ""}

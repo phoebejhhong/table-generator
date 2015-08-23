@@ -20,18 +20,6 @@ var tableGenerator = tableGenerator || {};
       var that = this;
       var headers = [];
 
-      var title = function() {
-        if (typeof that.props.title !== "undefined") {
-          return (
-            <caption>
-              {that.props.title}
-            </caption>
-          )
-        } else {
-          return "";
-        }
-      }();
-
       var rows = this.props.rows.map(function (row, rowIndex) {
         var cells = $.map(row, function (cell, colIdx) {
           if (rowIndex === 0 && that.props.header) {
@@ -72,7 +60,6 @@ var tableGenerator = tableGenerator || {};
 
       return (
         <table id="table">
-          {title}
           <tbody>
             {rows}
           </tbody>
