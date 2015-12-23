@@ -1,6 +1,6 @@
 # Table Generator
 
-Live: [http://phoebehong/table-generator][live-link]
+Live: [http://phoebehong.com/table-generator][live-link]
 
 ![alt text] [screen-shot]
 
